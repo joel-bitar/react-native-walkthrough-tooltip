@@ -274,12 +274,12 @@ class Tooltip extends Component {
   measureChildRect = () => {
     if (
       this.childWrapper.current &&
-      typeof this.childWrapper.current.measureInWindow === 'function'
+      typeof this.childWrapper.current.measure === 'function'
     ) {
-      this.childWrapper.current.measureInWindow((x, y, width, height) => {
+      this.childWrapper.current.measure((x, y, width, height, pageX, pageY) => {
         this.setState(
           {
-            childRect: new Rect(x, y, width, height),
+            childRect: new Rect(pageX, pageY, width, height),
             readyToComputeGeom: true,
           },
           () => this.finishMeasurements(),
