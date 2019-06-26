@@ -540,7 +540,7 @@ class Tooltip extends Component {
 
   render() {
     const { measurementsFinished, placement, waitingForInteractions } = this.state;
-    const { backgroundColor, children, content, isVisible, onClose } = this.props;
+    const { backgroundColor, children, content, isVisible, onClose, testID } = this.props;
 
     const extendedStyles = this._getExtendedStyles();
     const contentStyle = [styles.content, ...extendedStyles.content];
@@ -562,7 +562,7 @@ class Tooltip extends Component {
       <View>
         {/* This renders the fullscreen tooltip */}
         <Modal transparent visible={isVisible && !waitingForInteractions} onRequestClose={onClose}>
-          <TouchableWithoutFeedback onPress={onClose}>
+          <TouchableWithoutFeedback onPress={onClose} testID={testID}>
             <View
               style={[
                 styles.container,
