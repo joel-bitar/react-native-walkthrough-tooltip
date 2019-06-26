@@ -506,7 +506,7 @@ class Tooltip extends Component {
 
   renderChildInTooltip = () => {
     const { height, width, x, y } = this.state.childRect;
-    const { children, onChildPress, onChildLongPress } = this.props;
+    const { children, onChildPress, onChildLongPress, testID } = this.props;
     const wrapInTouchable =
       typeof onChildPress === 'function' || typeof onChildLongPress === 'function';
 
@@ -522,6 +522,7 @@ class Tooltip extends Component {
           alignItems: 'center',
           justifyContent: 'center',
         }}
+        testID={testID}
       >
         {children}
       </View>
@@ -540,7 +541,7 @@ class Tooltip extends Component {
 
   render() {
     const { measurementsFinished, placement, waitingForInteractions } = this.state;
-    const { backgroundColor, children, content, isVisible, onClose, testID } = this.props;
+    const { backgroundColor, children, content, isVisible, onClose } = this.props;
 
     const extendedStyles = this._getExtendedStyles();
     const contentStyle = [styles.content, ...extendedStyles.content];
@@ -562,7 +563,7 @@ class Tooltip extends Component {
       <View>
         {/* This renders the fullscreen tooltip */}
         <Modal transparent visible={isVisible && !waitingForInteractions} onRequestClose={onClose}>
-          <TouchableWithoutFeedback onPress={onClose} testID={testID}>
+          <TouchableWithoutFeedback onPress={onClose}>
             <View
               style={[
                 styles.container,
