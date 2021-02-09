@@ -99,7 +99,7 @@ class Tooltip extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const willBeVisible = nextProps.isVisible;
     const nextContent = nextProps.content;
     const { isVisible, content } = this.props;
