@@ -516,8 +516,8 @@ class Tooltip extends Component {
         pointerEvents={wrapInTouchable ? 'box-only' : 'auto'}
         style={{
           position: 'absolute',
-          height,
-          width,
+          height: Math.ceil(height*100) / 100,
+          width: Math.ceil(width*100) / 100,
           top: y,
           left: x,
           alignItems: 'center',
